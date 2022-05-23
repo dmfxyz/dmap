@@ -14,8 +14,10 @@ contract ContractTest is DSTest {
         bytes32 name = bytes32("name");
         bytes32 meta = bytes32("meta");
         bytes32 data = bytes32("data1");
+        basicSetAndGetTest(name, meta, data);
+    }
 
-        // test set meta and data
+    function basicSetAndGetTest(bytes32 name, bytes32 meta, bytes32 data) public {
         bytes memory call_data = abi.encodePacked(SEL,name,meta,data);
         (bool ok1, ) = dmap_address.call(call_data);
         require(ok1);
